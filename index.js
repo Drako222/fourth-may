@@ -2,15 +2,15 @@ import fetch from 'node-fetch';
 import fs from 'node:fs';
 import https from 'node:https';
 
-const test = await fetch(
+const html = await fetch(
   'https://memegen-link-examples-upleveled.netlify.app/',
 );
 
-const final = await test.text();
+const htmlString = await html.text();
 
 let m;
 const urls = [],
-  str = final,
+  str = htmlString,
   rex = /<img[^>]+src="?([^"\s]+)"?\s*\/>/g;
 
 while ((m = rex.exec(str))) {
